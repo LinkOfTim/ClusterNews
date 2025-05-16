@@ -17,6 +17,14 @@ from sentence_transformers import SentenceTransformer
 import hdbscan
 from keybert import KeyBERT
 
+def ensure_stopwords():
+    try:
+        print("✅ Stopwords уже установлены.")
+    except LookupError:
+        print("⬇️  Stopwords не найдены. Загружаю...")
+        download("stopwords")
+ensure_stopwords()
+
 def clean_text(text):
     """
     Применяет базовую очистку текста.

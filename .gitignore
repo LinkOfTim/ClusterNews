@@ -13,3 +13,5 @@ build/
 .env
 .idea/
 .vscode/
+
+config.json
