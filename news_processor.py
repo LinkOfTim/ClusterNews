@@ -18,11 +18,20 @@ import hdbscan
 from keybert import KeyBERT
 
 def ensure_stopwords():
+    from nltk.corpus import stopwords
+    from nltk import download
+
     try:
+        _ = stopwords.words("english")
         print("✅ Stopwords уже установлены.")
     except LookupError:
         print("⬇️  Stopwords не найдены. Загружаю...")
         download("stopwords")
+        try:
+            _ = stopwords.words("english")
+            print("✅ Stopwords успешно загружены.")
+        except LookupError:
+            print("❌ Не удалось загрузить stopwords.")
 ensure_stopwords()
 
 def clean_text(text):
